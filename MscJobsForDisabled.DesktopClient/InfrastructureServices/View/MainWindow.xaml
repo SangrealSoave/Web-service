@@ -1,0 +1,37 @@
+﻿<Window x:Class="MscJobsForDisabled.DesktopClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MscJobsForDisabled.DesktopClient"
+        mc:Ignorable="d"
+        Title="MoscowJobsForDisabled" Height="650" Width="800">
+    <Grid TextBlock.FontFamily="Century Gothic" TextBlock.FontSize="14">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Column="0" Padding="5" Background="#483D8B" Foreground="White" ItemsSource="{Binding Jobs}" SelectedItem="{Binding CurrentJob}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="24" Text="{Binding Path=Name}"/>
+                        <TextBlock FontSize="14" Text="{Binding Path=WorkingHours}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1" DataContext="{Binding CurrentJob}">
+            <TextBlock FontSize="24" Padding="2" Text="Подробная информация"></TextBlock>
+            <TextBlock Padding="3" Text="{Binding Name}"></TextBlock>
+            <TextBlock Padding="3" Text="{Binding WorkingHours}"></TextBlock>
+
+            <TextBlock Padding="3" Text="{Binding Location}"></TextBlock>
+            <TextBlock Padding="3" Text="{Binding Telephone }"></TextBlock>
+            <TextBlock Padding="3" Text="{Binding Email}"></TextBlock>
+        </StackPanel>
+    </Grid>
+
+</Window>
